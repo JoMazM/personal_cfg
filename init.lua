@@ -86,9 +86,10 @@ end
 ------------------------
 --- Plugin Configuration
 ------------------------
-if vim.fn.has("unix") == 1 then
-    local Plug = vim.fn['plug#']
-    vim.call('plug#begin', '~/bin/nvim-plugged')
+local Plug = nil
+if vim.fn.has("linux") == 1 then
+    Plug = vim.fn['plug#']
+    vim.call('plug#begin')
 else
     if vim.fn.exists("g:vscode") ~= 0 then
         vim.cmd('source c:/tools/XDG_DATA_HOME/nvim-data/site/autoload/plug.vim')
@@ -97,11 +98,7 @@ else
     vim.call('plug#begin', '~/../../tools/XDG_DATA_HOME/nvim/plugged')
 end
 
-
-
-
 -- Global plugins
-
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
@@ -137,7 +134,7 @@ else
     -- OS-Specific plugins
     -- Plug('rebelot/terminal.nvim')
     Plug('akinsho/toggleterm.nvim', {tag = '*'})
-    if vim.fn.has("unix") == 1 then
+    if vim.fn.has("linux") == 1 then
         Plug 'stevearc/overseer.nvim' -- Task runner 
     end
 
@@ -179,7 +176,7 @@ vim.call('plug#end')
 -----------------------------
 if vim.fn.exists("g:vscode") ~= 0 then
 else
-    if vim.fn.has("unix") == 1 then
+    if vim.fn.has("linux") == 1 then
         require("overseer").setup({strategy = "toggleterm",})
     end
 
@@ -296,7 +293,7 @@ else
     ---------------------------
     --- Debugger Configuration
     ---------------------------
-    if vim.fn.has("unix") == 1 then
+    if vim.fn.has("linux") == 1 then
         local dap = require('dap')
         dap.adapters.cppdbg = {
           id = 'cppdbg',
@@ -530,7 +527,7 @@ else
     -- if you only want these mappings for toggle term use term://*toggleterm#* instead of term://*
     local Terminal  = require('toggleterm.terminal').Terminal
     vim.cmd('autocmd! TermOpen term://*toggleterm#* lua vim.setTerminalKeymaps()')
-    if vim.fn.has("unix") == 1 then
+    if vim.fn.has("linux") == 1 then
         local bash = Terminal:new({ cmd = "bash", hidden = false })
 
         function _bash_toggle()
