@@ -88,7 +88,7 @@ end
 ------------------------
 if vim.fn.has("unix") == 1 then
     local Plug = vim.fn['plug#']
-    vim.call('plug#begin', '~/bin/nvim/plugged')
+    vim.call('plug#begin', '~/bin/nvim-plugged')
 else
     if vim.fn.exists("g:vscode") ~= 0 then
         vim.cmd('source c:/tools/XDG_DATA_HOME/nvim-data/site/autoload/plug.vim')
