@@ -48,7 +48,7 @@ config.background = {
      source = {
        -- File = "C:\\tools\\mountains.jpg",
        -- File = "C:\\tools\\chemistry.jpg",
-       FIle = "~/chhemistry.jpg"
+       File = "~/bin/chemistry.jpg"
      },
      width = '100%',
      -- repeat_x = 'NoRepeat',
